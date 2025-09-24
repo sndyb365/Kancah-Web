@@ -1,0 +1,610 @@
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f8;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* ===== AUTH PAGE ===== */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4a4e69, #22223b);
+}
+
+.auth-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  width: 360px;
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.2);
+}
+
+.auth-box h1 {
+  margin-bottom: 25px;
+  color: #22223b;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.auth-box button {
+  width: 100%;
+  padding: 14px;
+  background: #4a90e2;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.auth-box p {
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.auth-box a {
+  color: #4a90e2;
+  font-weight: 500;
+}
+
+/* ===== ADMIN LAYOUT ===== */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  background: #f4f6f8;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: #1f1f2e;
+  color: #fff;
+  flex-shrink: 0;
+  padding: 25px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1002;
+  border-radius: 0 16px 16px 0;
+}
+
+.sidebar h2.logo {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #f4f6f8;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin-bottom: 18px;
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: #f4f6f8;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.sidebar ul li a.active,
+.sidebar ul li a:hover {
+  background: #4a4e69;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.btn-logout {
+  margin-top: 30px;
+  width: 100%;
+  padding: 12px;
+  background: #ff4d6d;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  background: #ff2a55;
+}
+
+/* Hamburger toggle button */
+.menu-toggle {
+  display: block;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 18px;
+  z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+/* Saat sidebar dibuka, sembunyikan hamburger */
+.admin-layout.sidebar-open .menu-toggle {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Overlay for mobile */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.admin-layout.sidebar-open .overlay {
+  display: block;
+  opacity: 1;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 35px;
+  overflow-x: auto;
+}
+
+.content h1 {
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #22223b;
+  font-weight: 700;
+}
+
+/* Form Box */
+.form-box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 35px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.form-box input,
+.form-box select,
+.form-box textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.form-box button {
+  padding: 12px 18px;
+  background: #4a90e2;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.form-box button:hover {
+  background: #3578c6;
+}
+
+.input-liga-baru {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.input-liga-baru input {
+  flex: 1;
+}
+
+/* ===== TABLES ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+table th,
+table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+
+table th {
+  background: #4a4e69;
+  color: #fff;
+  font-weight: 600;
+}
+
+.img-thumb {
+  width: 80px;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.action-buttons button {
+  margin-right: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-edit {
+  background: #ffcd38;
+  color: #333;
+}
+
+.btn-edit:hover {
+  background: #f7b500;
+}
+
+.btn-delete {
+  background: #ff4d6d;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background: #ff2a55;
+}
+
+.btn-approve {
+  background: #4caf50;
+  color: #fff;
+}
+
+.btn-approve:hover {
+  background: #3e8e41;
+}
+
+.btn-revisi {
+  background: #ff9800;
+  color: #fff;
+}
+
+.btn-revisi:hover {
+  background: #e68900;
+}
+
+.btn-block {
+  background: #ff4d6d;
+  color: #fff;
+}
+
+.btn-unblock {
+  background: #4caf50;
+  color: #fff;
+}
+
+/* ===== MODAL REVISI MODERN ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 30px 35px;
+  border-radius: 20px;
+  width: 420px;
+  max-width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  text-align: center;
+  animation: scaleIn 0.3s ease;
+}
+
+.modal-box h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #22223b;
+}
+
+.modal-box textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  margin-bottom: 25px;
+  font-size: 14px;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-box textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.1), 0 0 8px rgba(74,144,226,0.3);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.btn-cancel {
+  background: #f0f0f0;
+  color: #555;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background: #e0e0e0;
+}
+
+.btn-primary {
+  background: #f0f0f0;
+  color: #555;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #e0e0e0;
+}
+.btn-submit-revisi {
+  background: #4a90e2;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease, transform 0.2s ease;
+}
+
+.btn-submit-revisi:hover {
+  background: #3578c6;
+  transform: translateY(-2px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Tambahkan di admin.css */
+
+/* Efek hover untuk tabel */
+.table-hover tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Styling untuk Modal Pratinjau */
+/* GANTI SEMUA CSS LAMA ANDA UNTUK MODAL PRATINJAU DENGAN INI */
+
+/* Wadah utama modal */
+.preview-modal {
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh; /* Batasi tinggi modal */
+  animation: slideDown 0.3s ease-out forwards;
+  
+  /* Layout Flexbox untuk memisahkan header, konten, dan footer */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Penting untuk border-radius */
+  position: relative; /* Penting untuk tombol close 'X' */
+}
+
+/* Area konten yang bisa di-scroll */
+.preview-scroll-container {
+  flex-grow: 1; /* Membuat area ini mengisi ruang kosong */
+  overflow-y: auto; /* SCROLLBAR HANYA MUNCUL DI SINI */
+  padding: 0 2rem; /* Jarak kiri-kanan untuk konten */
+}
+
+/* Gambar di dalam pratinjau */
+.preview-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Judul di dalam pratinjau */
+.preview-modal h3 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Info author di dalam pratinjau */
+.preview-author {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* Teks konten di dalam pratinjau */
+.preview-content {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  text-align: left;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+/* Tombol close 'X' di pojok kanan atas */
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2.5rem; /* Ukuran 'X' */
+  line-height: 1;
+  color: #aaa;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  color: #333;
+}
+
+@keyframes slideDown {
+  from {
+    /* Posisi awal: sedikit di atas layar & transparan */
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    /* Posisi akhir: di posisi normal & terlihat jelas */
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* Tambahkan atau ganti gaya yang ada di admin.css */
+
+.modal-buttons {
+  /* Memberi jarak antar tombol */
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end; /* Meratakan tombol ke kanan */
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+/* Gaya dasar untuk SEMUA tombol di dalam modal */
+.modal-buttons button {
+  border: none;
+  /* ✅ Ini akan membuat semua sudut tombol sama (8px) */
+  border-radius: 8px; 
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 20px; /* Membuat ukuran tombol proporsional */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Efek saat mouse diarahkan ke tombol */
+.modal-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Sekarang, kita hanya tentukan warna spesifik untuk tiap tombol */
+.btn-approve {
+  background-color: #28a745;
+  color: white;
+}
+.btn-revisi {
+  background-color: #ffc107;
+  color: #333;
+}
+.btn-cancel {
+  background-color: #f0f0f0;
+  color: #555;
+  border: 1px solid #ddd;
+}
+/* Styling untuk Status Badge di Admin Dashboard */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: white;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+/* Warna Hijau untuk Approved */
+.status-badge.status-approved { 
+  background-color: #28a745; 
+}
+
+/* Warna Kuning untuk Pending */
+.status-badge.status-pending { 
+  background-color: #ffc107; 
+  color: #333; /* Teks lebih gelap agar terbaca */
+}
+
+/* Warna Merah untuk Revisi */
+.status-badge.status-revisi { 
+  background-color: #dc3545; 
+}
